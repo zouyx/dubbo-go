@@ -114,8 +114,17 @@ func (fi *FilterInvoker) IsAvailable() bool {
 
 // Invoke ...
 func (fi *FilterInvoker) Invoke(ctx context.Context, invocation protocol.Invocation) protocol.Result {
-	result := fi.filter.Invoke(ctx, fi.next, invocation)
-	return fi.filter.OnResponse(ctx, result, fi.invoker, invocation)
+	invoker := fi.next
+	currentFilter := fi.filter
+	result := currentFilter.Invoke(ctx, invoker, invocation)
+	if result != nil && result.Error() != nil {
+		listener := currentFilter.(filter.Listener)
+		if listener != nil {
+			listener.OnError(ctx, result.Error(), invoker, invocation)
+		}
+	}
+
+	return currentFilter.OnResponse(ctx, result, fi.invoker, invocation)
 }
 
 // Destroy ...
