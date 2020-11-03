@@ -56,7 +56,7 @@ jobs:
       uses: actions-contrib/golangci-lint@v1
       with:
         # golangci-lint docker release tag
-        golangci_lint_version: 1.32.2 # optional, default is v1.23
+        golangci_lint_version: # optional, default is v1.23
 
     - name: Verify
       run: |
