@@ -50,6 +50,14 @@ jobs:
             go get -v -t -d ./...
         fi
 
+    - name: golangci-lint
+      # You may pin to the exact commit or the version.
+      # uses: actions-contrib/golangci-lint@502d94948c3b222dc7f1ce576a25269037600ef9
+      uses: actions-contrib/golangci-lint@v1
+      with:
+        # golangci-lint docker release tag
+        golangci_lint_version: 1.32.2 # optional, default is v1.23
+
     - name: Verify
       run: |
         make verify
