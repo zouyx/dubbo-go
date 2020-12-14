@@ -90,14 +90,18 @@ func (cl *ExchangeClient) doInit(url *common.URL) error {
 // two way request
 func (client *ExchangeClient) Request(invocation *protocol.Invocation, url *common.URL, timeout time.Duration,
 	result *protocol.RPCResult) error {
+	// 根据 Provider URL 初始化连接相关信息，如:连接池、数据序列化方法。
 	if er := client.doInit(url); er != nil {
 		return er
 	}
+	// 初始化请求对象
 	request := NewRequest("2.0.2")
 	request.Data = invocation
 	request.Event = false
+	// 标示为 two-way 通讯
 	request.TwoWay = true
 
+	// 初始化返回结果
 	rsp := NewPendingResponse(request.ID)
 	rsp.response = NewResponse(request.ID, "2.0.2")
 	rsp.Reply = (*invocation).Reply()
