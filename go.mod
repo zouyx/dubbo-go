@@ -16,7 +16,7 @@ require (
 	github.com/emicklei/go-restful/v3 v3.0.0
 	github.com/frankban/quicktest v1.4.1 // indirect
 	github.com/fsnotify/fsnotify v1.4.7
-	github.com/go-co-op/gocron v0.1.1
+	github.com/go-co-op/gocron v0.8.0
 	github.com/go-resty/resty/v2 v2.1.0
 	github.com/golang/mock v1.3.1
 	github.com/golang/protobuf v1.4.0
@@ -37,7 +37,7 @@ require (
 	github.com/prometheus/client_golang v1.1.0
 	github.com/satori/go.uuid v1.2.1-0.20181028125025-b2ce2384e17b
 	github.com/stretchr/objx v0.2.0 // indirect
-	github.com/stretchr/testify v1.5.1
+	github.com/stretchr/testify v1.7.0
 	github.com/zouyx/agollo/v3 v3.4.4
 	go.uber.org/atomic v1.6.0
 	go.uber.org/zap v1.15.0
